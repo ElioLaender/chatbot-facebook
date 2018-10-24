@@ -1,0 +1,41 @@
+{
+  "name": "api-sale-facebook",
+  "version": "1.0.0",
+  "description": "api to manage automatic sales service on facebook",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElioLaender/api-sale-facebook.git"
+  },
+  "keywords": [
+    "sale",
+    "facebook",
+    "api",
+    "javascript",
+    "nodejs",
+    "express"
+  ],
+  "author": "Élio Laender",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElioLaender/api-sale-facebook/issues"
+  },
+  "homepage": "https://github.com/ElioLaender/api-sale-facebook#readme",
+  "dependencies": {
+    "aws-sdk": "^2.335.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.3.0",
+    "mkdirp": "^0.5.1",
+    "mongoose": "^5.2.14",
+    "nodemailer": "^4.6.8",
+    "nodemailer-express-handlebars": "^3.0.0",
+    "path": "^0.12.7",
+    "request": "^2.88.0"
+  }
+}
