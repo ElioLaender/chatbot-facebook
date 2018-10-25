@@ -60,17 +60,8 @@ function chatbotFacebook(){
                         this.enableTipeOn(senderId);
                         setTimeout(() => { 
                             this.sendTextMessage(senderId, `Veja se alguma dessas opções pode lhe ajudar: 👇`);
-                           
-                        }, 1500);
-                        
-                        this.enableTipeOn(senderId);
-                        setTimeout((senderId) => { 
-                            this.sendTextMessage(senderId, `Teste`);
                             this.menuHelp(senderId);
-                        }, 1500);
-                     
-
-                       
+                        }, 1500);  
                 }
             }
             
@@ -391,7 +382,7 @@ function chatbotFacebook(){
             }
           };
 
-        this.callSendApi(messageData, 2500);
+        this.callSendApi(messageData, 3000);
     };
 
     //enviada para dar continuidade no atendimento caso usuário queira iteragir mais.
