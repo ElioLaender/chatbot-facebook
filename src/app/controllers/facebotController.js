@@ -28,8 +28,6 @@ router.post('/', (req, res) => {
                 entry.messaging.forEach((event) => {
                     if(event.message){
                         faceBot.enableMarkSeen(event.sender.id);
-                        faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉📱`);
-                        faceBot.webview(event.sender.id);
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
                             faceBot.treatMessage(event); 

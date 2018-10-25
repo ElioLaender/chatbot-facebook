@@ -60,9 +60,14 @@ function chatbotFacebook(){
                         this.enableTipeOn(senderId);
                         setTimeout(() => { 
                             this.sendTextMessage(senderId, `Veja se alguma dessas opções pode lhe ajudar: 👇`);
-                            this.enableTipeOn(senderId);
-                            this.menuHelp(senderId);
+                           
                         }, 1500);
+
+                        this.enableTipeOn(senderId);
+
+                        setTimeout(() => { 
+                            this.menuHelp(senderId);
+                        }, 2500);
                      
 
                        
@@ -374,7 +379,12 @@ function chatbotFacebook(){
                         "type":"postback",
                         "title":"Duvidas Frequentes",
                         "payload":"sandalinhas"
-                      }
+                    },
+                    {
+                        "type":"postback",
+                        "title":"Saber mais",
+                        "payload":"sandalinhas"
+                    }
                   ]
                 }
               }
