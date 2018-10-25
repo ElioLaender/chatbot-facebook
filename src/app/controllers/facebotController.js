@@ -34,14 +34,17 @@ router.post('/', (req, res) => {
                         }, 1500);
                         
                     } else {
+
+                        console.log('-----------------------------');
+                        console.log(event.postback.payload);
+                        
                         if(event.postback && event.postback.payload){
                            switch(event.postback.payload){
                                 case 'started_chat':
-                                console.log("aqui!!!!!!!!!!");
                                   faceBot.enableTipeOn(event.sender.id);
                                   faceBot.sendTextMessage(event.sender.id, `Oi! Sou a Melisa, assistente virtual da WantBack!`);
-                                  //faceBot.sendFirstMenu(event.sender.id);
-                                  //faceBot.webview(event.sender.id);
+                                  faceBot.sendFirstMenu(event.sender.id);
+                                  faceBot.webview(event.sender.id);
                                 break;
                                 case 'saber_mais':
                                 faceBot.sendTextMessage(event.sender.id, 'Nos somos uma empresa de descontos!');
