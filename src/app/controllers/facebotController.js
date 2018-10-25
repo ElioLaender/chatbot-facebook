@@ -17,6 +17,9 @@ router.post('/', (req, res) => {
 
     //verifica se é o facebook que está enviando. 
     if(data && data.object === 'page'){
+
+        console.log('Teste kkk');
+        
         //Percorre todos os valores existentes em entry
         data.entry.forEach((entry) => {
             let pageId = entry.id;
@@ -35,8 +38,6 @@ router.post('/', (req, res) => {
                         
                     } else {
                         if(event.postback && event.postback.payload){
-
-                           console.log('Teste kkk');
                            switch(event.postback.payload){
                                 case 'started_chat':
                                   faceBot.enableTipeOn(event.sender.id);
