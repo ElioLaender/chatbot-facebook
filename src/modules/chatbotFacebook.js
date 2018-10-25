@@ -292,7 +292,7 @@ function chatbotFacebook(){
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title":"#Sandalinhas",
+                      "title":" ",
                       "buttons":[
                         {
                           "type":"postback",
