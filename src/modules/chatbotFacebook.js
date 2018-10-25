@@ -60,7 +60,7 @@ function chatbotFacebook(){
                         this.enableTipeOn(senderId);
                         setTimeout(() => { 
                             this.sendTextMessage(senderId, `Veja se alguma dessas opções pode lhe ajudar: 👇`);
-                            this.menuHelp(senderId);
+                            this.webview(senderId);
                         }, 1500);  
                 }
             }
