@@ -55,9 +55,6 @@ router.post('/new', (req, res) => {
 
     //Get array of images converted to Base64
     const imagesBase64 = productData.variations.images;
-
-    console.log("-------------");
-    console.log(imagesBase64);
     
     delete productData.variations.images;
 
