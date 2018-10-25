@@ -4,7 +4,7 @@ const request = require('request');
 function chatbotFacebook(){
 
     //Salvar no banco de dados, por enquando será em array
-    this.statusCall = '';
+    this.statusCall = [];
 
     this.treatMessage = (event) => {
 
@@ -20,10 +20,10 @@ function chatbotFacebook(){
         if(messageText){
 
             //Verifica qual o estado da conversa, pois algumas respostas podem mudar de acordo com o decorrer das mensagens. 
-            if(this.statusCall != ''){
+            if(this.statusCall[senderId]){
 
                 //Age de acordo com o estado da conversa. 
-                switch(this.statusCall){
+                switch(this.statusCall[senderId]){
                     case 'segundo_ciclo':
                     //Continuação do atendimento, segundo contato//
                     switch(messageText){
@@ -320,7 +320,7 @@ function chatbotFacebook(){
         //Dá um tempo antes de retornar, para ficar mais natural. 
         setTimeout(() =>{
             this.sendTextMessage(recipientId, 'Posso te ajudar com mais alguma coisa?');
-            this.statusCall = 'segundo_ciclo';
+            this.statusCall[recipientId] = 'segundo_ciclo';
         }, 2500);
     }
 }

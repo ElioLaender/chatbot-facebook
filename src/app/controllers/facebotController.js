@@ -16,7 +16,8 @@ router.post('/', (req, res) => {
     const data = req.body;
 
     //verifica se é o facebook que está enviando. 
-    if(data && data.object === 'page'){        
+    if(data && data.object === 'page'){
+        
         //Percorre todos os valores existentes em entry
         data.entry.forEach((entry) => {
             let pageId = entry.id;
@@ -28,16 +29,13 @@ router.post('/', (req, res) => {
                     if(event.message){
                         faceBot.enableMarkSeen(event.sender.id);
                         faceBot.sendFirstMenu(event.sender.id);
+                        faceBot.webview(event.sender.id);
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
                             faceBot.treatMessage(event); 
                         }, 1500);
                         
                     } else {
-
-                        console.log('-----------------------------');
-                        console.log(event.postback.payload);
-                        
                         if(event.postback && event.postback.payload){
                            switch(event.postback.payload){
                                 case 'started_chat':
