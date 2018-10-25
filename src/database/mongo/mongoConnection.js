@@ -1,6 +1,6 @@
 //Definindo a conexão com nossa base de dados. 
 const mongoose = require('mongoose');
-const urlConnection = 'mongodb://dba:el193945@naboo.mongodb.umbler.com:35789/saledb';
+const urlConnection = 'mongodb://adalaender:dba141519@naboo.mongodb.umbler.com:39137/dbsale';
 
 mongoose.connect(urlConnection, {useNewUrlParser: true}).then(
     () => {mongoose.Promise = global.Promise; },
