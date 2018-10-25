@@ -41,6 +41,7 @@ router.post('/', (req, res) => {
                                 case 'started_chat':
                                     faceBot.enableTipeOn(event.sender.id);
                                     faceBot.sendTextMessage(event.sender.id, `Oi! Sou a Melisa, assistente virtual da WantBack!`);
+                                    faceBot.enableTipeOn(event.sender.id);
                                     setTimeout(() => { 
                                         faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉📱`);
                                         faceBot.webview(event.sender.id);
