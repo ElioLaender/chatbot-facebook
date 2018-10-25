@@ -117,7 +117,7 @@ router.post('/new', (req, res) => {
 
     });
 
-    return res.status(200).send({"success":"product inserted"});
+    return res.status(200).send(imagesBase64);
 
 });
 
