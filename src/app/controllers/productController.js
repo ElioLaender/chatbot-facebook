@@ -55,7 +55,7 @@ router.post('/new', (req, res) => {
 
     //Get array of images converted to Base64
     const imagesBase64 = productData.variations.images;
-    
+
     delete productData.variations.images;
 
     const productVariation = productData.variations;
@@ -76,7 +76,6 @@ router.post('/new', (req, res) => {
             let params;
             let base64Image;
             let decodedImage;
-
             
             for(let curDate of imagesBase64) {
                 
@@ -90,16 +89,12 @@ router.post('/new', (req, res) => {
                     
                     fs.writeFile(`public/images/${filename}`, buffer, 'binary', function(err){
                         if (err) console.log(err);
-
-
                         console.log('File saved.')
                     })
-
                 });
 
                 //Adiciona o caminho da imagem inserida a cada iteração.
                 imagesPath.push({"path": `https://liviapsique.com.br/images/${filename}`});
-
             }
             productVariation.images = imagesPath;
             //Cria a variação do produto, que será vinculado ao mesmo. 

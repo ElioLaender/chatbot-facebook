@@ -74,7 +74,7 @@ function chatbotFacebook(){
             request({
                 //endereço de envio das respostas
                 "uri": 'https://graph.facebook.com/v2.6/me/messages',
-                "qs": { "access_token": 'EAADmfswl4QwBAL0h14p2PcPwfveZCjRcMWJvDERYXywu18HXBvnxm3J4qOC24YLeoY8ZCu7ejfyXYQdyFYqu0D7SUGfMB2miUzpdCaZAsFccIVUUYhCatT5YegydVefmGkkuomORq3OFoBgimLCd1e7BxS9kdli3IAnzwoXbQZDZD'},
+                "qs": { "access_token": 'EAADmfswl4QwBAD8pTJ0v5tuZAAHTDwwu2NsYZAZAdQRBhk7e6CcHXpwIJVduUcPmJbLBWBfmVZCzcwSVOL7IbxH7L8hkxYCEfJ3oZAxIxpK2jBSDd0WIZB2NvHyLkoxhmU2tNQdZALCjzNbCzyuBgTuCE9UosSfIpFN0RhYts2TowZDZD'},
                 "method": 'POST',
                 "json": messageData
             }, (error, response, body) => {
