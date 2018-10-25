@@ -28,11 +28,10 @@ router.post('/', (req, res) => {
                 entry.messaging.forEach((event) => {
                     if(event.message){
                         faceBot.enableMarkSeen(event.sender.id);
-                       // faceBot.sendFirstMenu(event.sender.id);
+                        faceBot.webview(event.sender.id);
                         setTimeout(() => { 
-                            //faceBot.enableTipeOn(event.sender.id);
-                            //faceBot.treatMessage(event);
-                            faceBot.webview(event.sender.id); 
+                            faceBot.enableTipeOn(event.sender.id);
+                            faceBot.treatMessage(event); 
                         }, 1500);
                         
                     } else {
@@ -61,7 +60,7 @@ router.post('/', (req, res) => {
         //Retorna 200 para avisar o facebook que o post foi recebido
         res.sendStatus(200);
     } else {
-        res.status(404).send('passou aqui');
+        res.status(404).send('Não passou aqui');
     }
 
 });
