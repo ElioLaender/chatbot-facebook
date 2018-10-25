@@ -278,7 +278,7 @@ function chatbotFacebook(){
     };
 
     this.webview = (recipientId) => {
-        console.log('chegou aqui!!');
+      
         let messageData = 
         {
             "recipient":{
@@ -289,13 +289,13 @@ function chatbotFacebook(){
                 "quick_replies": [
                 {
                   "content_type":"text",
-                  "title":"#sandalia",
+                  "title":"#webviwkkkkkkk",
                   "image_url":"https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/master/images/Messenger_Icon.png",
                   "payload":"payload1"
                 },
                 {
                   "content_type":"text",
-                  "title":"#webview",
+                  "title":"#sapatilha",
                   "payload":"payload2"
                 },
                 {
@@ -323,10 +323,16 @@ function chatbotFacebook(){
                     "title":"#sandalias",
                     "payload":"payload2"
                 }
-              ]
+              ],
+              "attachment":{
+                "type":"template",
+                "payload":{
+                  "template_type":"generic",
+                  "elements":[]
+                }
+              }
             }
-          };
-        
+          }
 
         this.callSendApi(messageData, 2500);
     };
