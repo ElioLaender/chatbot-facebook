@@ -292,84 +292,12 @@ function chatbotFacebook(){
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title":"WebView",
-                      "subtitle":`💵 R$ 120,00\n💳 ou até 2x de R$ 60,00 s / juros`,
-                      "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines224.jpg",
+                      "title":"#Sandalinhas",
                       "buttons":[
                         {
                           "type":"postback",
                           "title":"📦 Abrir Produto",
-                          "payload":"<POSTBACK_PAYLOAD>"
-                        },
-                        {
-                            "type":"postback",
-                            "title":"❤ Favoritar",
-                            "payload":"<POSTBACK_PAYLOAD>"
-                          }
-                      ]      
-                    },
-                    {
-                        "title":"Peep Toe Classic Nude ",
-                        "subtitle":`💵 R$ 240,00\n💳 ou até 2x de R$ 120,00 s / juros`,
-                        "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines880.jpg",
-                        "buttons":[
-                            {
-                              "type":"postback",
-                              "title":"📦 Abrir Produto",
-                              "payload":"<POSTBACK_PAYLOAD>"
-                            },
-                            {
-                                "type":"postback",
-                                "title":"❤ Favoritar",
-                                "payload":"<POSTBACK_PAYLOAD>"
-                              }
-                          ]        
-                      },
-                      {
-                        "title":"This is a generic template",
-                        "subtitle":"Plus a subtitle!",
-                        "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines651.jpg",
-                        "buttons":[
-                          {
-                            "type":"postback",
-                            "title":"Postback Button",
-                            "payload":"<POSTBACK_PAYLOAD>"
-                          }
-                        ]      
-                      },
-                      {
-                        "title":"This is a generic template",
-                        "subtitle":"Plus a subtitle!",
-                        "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines651.jpg",
-                        "buttons":[
-                          {
-                            "type":"postback",
-                            "title":"Postback Button",
-                            "payload":"<POSTBACK_PAYLOAD>"
-                          }
-                        ]      
-                      }, 
-                    {
-                      "title":"Another generic template",
-                      "subtitle":"Plus a subtitle!",
-                      "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines651.jpg",
-                      "buttons":[
-                        {
-                          "type":"postback",
-                          "title":"Postback Button",
-                          "payload":"<POSTBACK_PAYLOAD>"
-                        }
-                      ]      
-                    },
-                    {
-                      "title":"And another!",
-                      "subtitle":"Plus a subtitle!",
-                      "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines651.jpg",
-                      "buttons":[
-                        {
-                          "type":"postback",
-                          "title":"Postback Button",
-                          "payload":"<POSTBACK_PAYLOAD>"
+                          "payload":"sandalinhas"
                         }
                       ]      
                     }
