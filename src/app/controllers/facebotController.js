@@ -37,6 +37,7 @@ router.post('/', (req, res) => {
                         if(event.postback && event.postback.payload){
                            switch(event.postback.payload){
                                 case 'started_chat':
+                                console.log("aqui!!!!!!!!!!");
                                   faceBot.enableTipeOn(event.sender.id);
                                   faceBot.sendTextMessage(event.sender.id, `Oi! Sou a Melisa, assistente virtual da WantBack!`);
                                   //faceBot.sendFirstMenu(event.sender.id);
