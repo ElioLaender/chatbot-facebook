@@ -58,6 +58,7 @@ router.post('/new', (req, res) => {
 
     console.log("-------------");
     console.log(imagesBase64);
+    
     delete productData.variations.images;
 
     const productVariation = productData.variations;
@@ -103,7 +104,6 @@ router.post('/new', (req, res) => {
                 imagesPath.push({"path": `https://liviapsique.com.br/images/${filename}`});
 
             }
-
             productVariation.images = imagesPath;
             //Cria a variação do produto, que será vinculado ao mesmo. 
             Product.findById({'_id': data._id}, (err, user) => {
