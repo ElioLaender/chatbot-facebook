@@ -16,10 +16,7 @@ router.post('/', (req, res) => {
     const data = req.body;
 
     //verifica se é o facebook que está enviando. 
-    if(data && data.object === 'page'){
-
-        console.log('Teste kkk');
-        
+    if(data && data.object === 'page'){        
         //Percorre todos os valores existentes em entry
         data.entry.forEach((entry) => {
             let pageId = entry.id;
@@ -42,8 +39,8 @@ router.post('/', (req, res) => {
                                 case 'started_chat':
                                   faceBot.enableTipeOn(event.sender.id);
                                   faceBot.sendTextMessage(event.sender.id, `Oi! Sou a Melisa, assistente virtual da WantBack!`);
-                                  faceBot.sendFirstMenu(event.sender.id);
-                                  faceBot.webview(event.sender.id);
+                                  //faceBot.sendFirstMenu(event.sender.id);
+                                  //faceBot.webview(event.sender.id);
                                 break;
                                 case 'saber_mais':
                                 faceBot.sendTextMessage(event.sender.id, 'Nos somos uma empresa de descontos!');
