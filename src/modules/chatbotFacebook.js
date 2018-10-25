@@ -285,18 +285,57 @@ function chatbotFacebook(){
               "id":recipientId
             },
             "messaging_type": "response",
+            "message":{
+                "quick_replies": [
+                {
+                  "content_type":"text",
+                  "title":"#sandalia",
+                  "image_url":"https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/master/images/Messenger_Icon.png",
+                  "payload":"payload1"
+                },
+                {
+                  "content_type":"text",
+                  "title":"#sapatilha",
+                  "payload":"payload2"
+                },
+                {
+                    "content_type":"text",
+                    "title":"#botas",
+                    "payload":"payload2"
+                },
+                {
+                    "content_type":"text",
+                    "title":"#chinelinhos",
+                    "payload":"payload2"
+                },
+                {
+                    "content_type":"text",
+                    "title":"#anabela",
+                    "payload":"payload2"
+                },
+                {
+                    "content_type":"text",
+                    "title":"#pipitu",
+                    "payload":"payload2"
+                },
+                {
+                    "content_type":"text",
+                    "title":"#sandalias",
+                    "payload":"payload2"
+                }
+              ],
               "attachment":{
                 "type":"template",
                 "payload":{
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title":"#Sapatinho",
+                      "title":"WebView",
                       "subtitle":`💵 R$ 120,00\n💳 ou até 2x de R$ 60,00 s / juros`,
                       "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines224.jpg",
                       "buttons":[
                         {
-                          "type":"#EIta, Eita",
+                          "type":"postback",
                           "title":"📦 Abrir Produto",
                           "payload":"<POSTBACK_PAYLOAD>"
                         },
