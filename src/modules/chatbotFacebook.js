@@ -286,44 +286,6 @@ function chatbotFacebook(){
             },
             "messaging_type": "response",
             "message":{
-                "quick_replies": [
-                {
-                  "content_type":"text",
-                  "title":"#sandalia",
-                  "image_url":"https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/master/images/Messenger_Icon.png",
-                  "payload":"payload1"
-                },
-                {
-                  "content_type":"text",
-                  "title":"#sapatilha",
-                  "payload":"payload2"
-                },
-                {
-                    "content_type":"text",
-                    "title":"#botas",
-                    "payload":"payload2"
-                },
-                {
-                    "content_type":"text",
-                    "title":"#chinelinhos",
-                    "payload":"payload2"
-                },
-                {
-                    "content_type":"text",
-                    "title":"#anabela",
-                    "payload":"payload2"
-                },
-                {
-                    "content_type":"text",
-                    "title":"#pipitu",
-                    "payload":"payload2"
-                },
-                {
-                    "content_type":"text",
-                    "title":"#sandalias",
-                    "payload":"payload2"
-                }
-              ],
               "attachment":{
                 "type":"template",
                 "payload":{
