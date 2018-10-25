@@ -31,8 +31,8 @@ router.post('/', (req, res) => {
                         faceBot.sendFirstMenu(event.sender.id);
 
                         setTimeout(() => { 
-                            faceBot.enableTipeOn(event.sender.id);
-                            faceBot.treatMessage(event);
+                            //faceBot.enableTipeOn(event.sender.id);
+                            //faceBot.treatMessage(event);
                             faceBot.webview(event.sender.id); 
                         }, 1500);
                         
