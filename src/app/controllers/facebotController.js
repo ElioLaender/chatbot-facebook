@@ -29,10 +29,11 @@ router.post('/', (req, res) => {
                     if(event.message){
                         faceBot.enableMarkSeen(event.sender.id);
                         faceBot.sendFirstMenu(event.sender.id);
-                        faceBot.webview(event.sender.id);
+
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
-                            faceBot.treatMessage(event); 
+                            faceBot.treatMessage(event);
+                            faceBot.webview(event.sender.id); 
                         }, 1500);
                         
                     } else {
