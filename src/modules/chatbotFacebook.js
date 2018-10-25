@@ -279,37 +279,54 @@ function chatbotFacebook(){
 
     this.webview = (recipientId) => {
         console.log('chegou aqui!!');
-        const messageData = 
+        let messageData = 
         {
             "recipient":{
-                "id":recipientId
-              },
-            "persistent_menu":[
-              {
-                "locale":"default",
-                "composer_input_disabled": false,
-                "call_to_actions":[
-                  {
-                    "title":"My Account",
-                    "type":"nested",
-                    "call_to_actions":[
-                      {
-                        "title":"Pay Bill",
-                        "type":"postback",
-                        "payload":"PAYBILL_PAYLOAD"
-                      },
-                      {
-                        "type":"web_url",
-                        "title":"Latest News",
-                        "url":"https://www.messenger.com/",
-                        "webview_height_ratio":"full"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
+              "id":recipientId
+            },
+            "messaging_type": "response",
+            "message":{
+                "quick_replies": [
+                {
+                  "content_type":"text",
+                  "title":"#sandalia",
+                  "image_url":"https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/master/images/Messenger_Icon.png",
+                  "payload":"payload1"
+                },
+                {
+                  "content_type":"text",
+                  "title":"#webview",
+                  "payload":"payload2"
+                },
+                {
+                    "content_type":"text",
+                    "title":"#botas",
+                    "payload":"payload2"
+                },
+                {
+                    "content_type":"text",
+                    "title":"#chinelinhos",
+                    "payload":"payload2"
+                },
+                {
+                    "content_type":"text",
+                    "title":"#anabela",
+                    "payload":"payload2"
+                },
+                {
+                    "content_type":"text",
+                    "title":"#pipitu",
+                    "payload":"payload2"
+                },
+                {
+                    "content_type":"text",
+                    "title":"#sandalias",
+                    "payload":"payload2"
+                }
+              ]
+            }
           };
+        
 
         this.callSendApi(messageData, 2500);
     };
