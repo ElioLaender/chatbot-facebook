@@ -59,7 +59,6 @@ function chatbotFacebook(){
                         this.sendTextMessage(senderId, 'Infelizmente, não entendi o que disse. =(');
                         this.enableTipeOn(senderId);
                         setTimeout(() => { 
-                            this.sendTextMessage(senderId, `Veja se alguma dessas opções pode lhe ajudar: 👇`);
                             this.menuHelp(senderId);
                         }, 1500);  
                 }
@@ -359,12 +358,22 @@ function chatbotFacebook(){
                   "type":"template",
                   "payload":{
                     "template_type":"button",
-                    "text":"What do you want to do next?",
+                    "text":"Veja se alguma dessas opções pode lhe ajudar: 👇",
                     "buttons":[
                       {
-                        "type":"web_url",
-                        "url":"https://www.messenger.com",
-                        "title":"Visit Messenger"
+                        "type":"postback",
+                        "title":" 📗 Categorias",
+                        "payload":"sandalinhas"
+                      },
+                      {
+                        "type":"postback",
+                        "title":" 📕 Saiba Mais",
+                        "payload":"sandalinhas"
+                      },
+                      {
+                        "type":"postback",
+                        "title":" 📙 Dúvidas Frequentes",
+                        "payload":"sandalinhas"
                       }
                     ]
                   }
