@@ -64,7 +64,7 @@ function chatbotFacebook(){
                         }, 1500);
                         
                         this.enableTipeOn(senderId);
-                        setTimeout(() => { 
+                        setTimeout((senderId) => { 
                             this.sendTextMessage(senderId, `Teste`);
                             this.menuHelp(senderId);
                         }, 1500);
