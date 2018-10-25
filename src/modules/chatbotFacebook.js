@@ -292,11 +292,11 @@ function chatbotFacebook(){
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title":"\tSandalinhas",
+                      "title":"👇👇👇",
                       "buttons":[
                         {
                           "type":"postback",
-                          "title":"📦 Abrir Produto",
+                          "title":"🔎 Ver #Sandalinhas",
                           "payload":"sandalinhas"
                         }
                       ]      
