@@ -300,7 +300,37 @@ function chatbotFacebook(){
                           "payload":"sandalinhas"
                         }
                       ]      
-                    }
+                    },
+                    {
+                        "title":"Categorias (➡️ ⬅️) ",
+                        "buttons":[
+                          {
+                            "type":"postback",
+                            "title":"🔎 Ver Sandalinhas",
+                            "payload":"sandalinhas"
+                          }
+                        ]      
+                      },
+                      {
+                        "title":"Categorias (➡️ ⬅️) ",
+                        "buttons":[
+                          {
+                            "type":"postback",
+                            "title":"🔎 Ver Sandalinhas",
+                            "payload":"sandalinhas"
+                          }
+                        ]      
+                      },
+                      {
+                        "title":"Categorias (➡️ ⬅️) ",
+                        "buttons":[
+                          {
+                            "type":"postback",
+                            "title":"🔎 Ver Sandalinhas",
+                            "payload":"sandalinhas"
+                          }
+                        ]      
+                      }
                   ]
                 }
               }
