@@ -60,7 +60,7 @@ function chatbotFacebook(){
                         this.enableTipeOn(senderId);
                         setTimeout(() => { 
                             this.sendTextMessage(senderId, `Veja se alguma dessas opções pode lhe ajudar: 👇`);
-                            this.webview(senderId);
+                            this.menuHelp(senderId);
                         }, 1500);  
                 }
             }
@@ -352,34 +352,24 @@ function chatbotFacebook(){
         let messageData = 
         {
             "recipient":{
-              "id":recipientId
-            },
-            "messaging_type": "response",
-            "message":{
-              "attachment":{
-                "type":"button",
-                "payload":{
-                  "template_type":"generic",
-                  "buttons":[
-                    {
-                      "type":"postback",
-                      "title":"Categorias",
-                      "payload":"sandalinhas"
-                    },
-                    {
-                        "type":"postback",
-                        "title":"Duvidas Frequentes",
-                        "payload":"sandalinhas"
-                    },
-                    {
-                        "type":"postback",
-                        "title":"Saber mais",
-                        "payload":"sandalinhas"
-                    }
-                  ]
+                "id":recipientId
+              },
+              "message":{
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"button",
+                    "text":"What do you want to do next?",
+                    "buttons":[
+                      {
+                        "type":"web_url",
+                        "url":"https://www.messenger.com",
+                        "title":"Visit Messenger"
+                      }
+                    ]
+                  }
                 }
               }
-            }
           };
 
         this.callSendApi(messageData, 3000);
