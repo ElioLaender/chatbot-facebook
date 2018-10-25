@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
                 entry.messaging.forEach((event) => {
                     if(event.message){
                         faceBot.enableMarkSeen(event.sender.id);
-                        faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉👈`);
+                        faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉📱`);
                         faceBot.webview(event.sender.id);
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
@@ -39,14 +39,18 @@ router.post('/', (req, res) => {
                         if(event.postback && event.postback.payload){
                            switch(event.postback.payload){
                                 case 'started_chat':
-                                  faceBot.enableTipeOn(event.sender.id);
-                                  faceBot.sendTextMessage(event.sender.id, `Oi! Sou a Melisa, assistente virtual da WantBack!`);
-                                  faceBot.sendFirstMenu(event.sender.id);
-                                  faceBot.webview(event.sender.id);
+                                    faceBot.enableTipeOn(event.sender.id);
+                                    faceBot.sendTextMessage(event.sender.id, `Oi! Sou a Melisa, assistente virtual da WantBack!`);
+                                    setTimeout(() => { 
+                                        faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉📱`);
+                                        faceBot.webview(event.sender.id);
+                                    }, 1500);
+                                    //faceBot.sendFirstMenu(event.sender.id);
+                                    
                                 break;
                                 case 'saber_mais':
-                                faceBot.sendTextMessage(event.sender.id, 'Nos somos uma empresa de descontos!');
-                                faceBot.showOptionsMenu(event.sender.id);
+                                    faceBot.sendTextMessage(event.sender.id, 'Nos somos uma empresa de descontos!');
+                                    faceBot.showOptionsMenu(event.sender.id);
                                 break;
 
                                 default:
