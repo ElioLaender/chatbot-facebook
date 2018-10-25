@@ -35,6 +35,8 @@ router.post('/', (req, res) => {
                         
                     } else {
                         if(event.postback && event.postback.payload){
+
+                           console.log('Teste kkk');
                            switch(event.postback.payload){
                                 case 'started_chat':
                                   faceBot.enableTipeOn(event.sender.id);
