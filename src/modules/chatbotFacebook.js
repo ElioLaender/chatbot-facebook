@@ -56,7 +56,16 @@ function chatbotFacebook(){
                     break;
     
                     default:
-                        this.sendTextMessage(senderId, 'Infelizmente, não entendi o que disse. =( Irei perguntar para o pessoal aqui!');
+                        this.sendTextMessage(senderId, 'Infelizmente, não entendi o que disse. =(');
+                        this.enableTipeOn(senderId);
+                        setTimeout(() => { 
+                            this.sendTextMessage(senderId, `Veja se alguma dessas opções pode lhe ajudar: 👇`);
+                            this.enableTipeOn(senderId);
+                            this.menuHelp(senderId);
+                        }, 1500);
+                     
+
+                       
                 }
             }
             
@@ -330,6 +339,41 @@ function chatbotFacebook(){
                             "payload":"sandalinhas"
                           }
                         ]      
+                      }
+                  ]
+                }
+              }
+            }
+          };
+
+        this.callSendApi(messageData, 2500);
+    };
+
+    //////////
+
+    this.menuHelp = (recipientId) => {
+      
+        let messageData = 
+        {
+            "recipient":{
+              "id":recipientId
+            },
+            "messaging_type": "response",
+            "message":{
+              "attachment":{
+                "type":"button",
+                "payload":{
+                  "template_type":"generic",
+                  "buttons":[
+                    {
+                      "type":"postback",
+                      "title":"Categorias",
+                      "payload":"sandalinhas"
+                    },
+                    {
+                        "type":"postback",
+                        "title":"Duvidas Frequentes",
+                        "payload":"sandalinhas"
                       }
                   ]
                 }
