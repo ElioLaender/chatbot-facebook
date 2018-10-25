@@ -58,13 +58,16 @@ function chatbotFacebook(){
                     default:
                         this.sendTextMessage(senderId, 'Infelizmente, não entendi o que disse. =(');
                         this.enableTipeOn(senderId);
-                        this.sendTextMessage(senderId, `Veja se alguma dessas opções pode lhe ajudar: 👇`);
+                        setTimeout(() => { 
+                            this.sendTextMessage(senderId, `Veja se alguma dessas opções pode lhe ajudar: 👇`);
+                           
+                        }, 1500);
+                        
                         this.enableTipeOn(senderId);
                         setTimeout(() => { 
-                            this.menuHelp(senderId); 
+                            this.sendTextMessage(senderId, `Teste`);
+                            this.menuHelp(senderId);
                         }, 1500);
-
-                      
                      
 
                        
