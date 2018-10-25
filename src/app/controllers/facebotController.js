@@ -28,14 +28,7 @@ router.post('/', (req, res) => {
                 entry.messaging.forEach((event) => {
                     if(event.message){
                         faceBot.enableMarkSeen(event.sender.id);
-                       // faceBot.sendFirstMenu(event.sender.id);
-
-                       faceBot.sendTextMessage(event.sender.id, `fadas`);
-                        setTimeout(() => { 
-                            //faceBot.enableTipeOn(event.sender.id);
-                            //faceBot.treatMessage(event);
-                            faceBot.webview(event.sender.id); 
-                        }, 1500);
+                    
                         
                     } else {
                         if(event.postback && event.postback.payload){
