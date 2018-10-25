@@ -20,7 +20,7 @@ function chatbotFacebook(){
         if(messageText){
 
             //Verifica qual o estado da conversa, pois algumas respostas podem mudar de acordo com o decorrer das mensagens. 
-            if(this.statusCall[senderId]){
+            if(this.statusCall[senderId] != null){
 
                 //Age de acordo com o estado da conversa. 
                 switch(this.statusCall[senderId]){
