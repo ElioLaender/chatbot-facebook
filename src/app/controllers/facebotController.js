@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
             if(entry.messaging){
                 entry.messaging.forEach((event) => {
                     if(event.message){
-                        faceBot.enableMarkSeen(event.sender.id); 👉👈
+                        faceBot.enableMarkSeen(event.sender.id);
                         faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉👈`);
                         faceBot.webview(event.sender.id);
                         setTimeout(() => { 
