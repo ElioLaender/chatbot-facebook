@@ -289,7 +289,7 @@ function chatbotFacebook(){
                 "quick_replies": [
                 {
                   "content_type":"text",
-                  "title":"#webviwkkkkkkk",
+                  "title":"#sandalia",
                   "image_url":"https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/master/images/Messenger_Icon.png",
                   "payload":"payload1"
                 },
@@ -323,14 +323,7 @@ function chatbotFacebook(){
                     "title":"#sandalias",
                     "payload":"payload2"
                 }
-              ],
-              "attachment":{
-                "type":"template",
-                "payload":{
-                  "template_type":"generic",
-                  "elements":[]
-                }
-              }
+              ]
             }
           }
 
