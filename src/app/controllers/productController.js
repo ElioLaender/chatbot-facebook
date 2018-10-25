@@ -56,6 +56,8 @@ router.post('/new', (req, res) => {
     //Get array of images converted to Base64
     const imagesBase64 = productData.variations.images;
 
+    console.log("-------------");
+    console.log(imagesBase64);
     delete productData.variations.images;
 
     const productVariation = productData.variations;
@@ -117,7 +119,7 @@ router.post('/new', (req, res) => {
 
     });
 
-    return res.status(200).send(imagesBase64);
+    return res.status(200).send({"success":"product inserted"});
 
 });
 
