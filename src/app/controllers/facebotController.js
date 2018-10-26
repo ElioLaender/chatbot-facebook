@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
 
 router.get('/teste', (req, res) => {
 
- 
         Category.find({"parent": null}, (err, data) => {
             if(err) console.log(err);
 
@@ -35,7 +34,7 @@ router.get('/teste', (req, res) => {
                 }
               }
             };
-            
+
             data.forEach((category) => {
                 messageData
                 .message
@@ -58,9 +57,6 @@ router.get('/teste', (req, res) => {
 
               res.send(messageData);
         });
-      
-
-       
 });
 
 //facebook vai mandar  as informações do chat via post
