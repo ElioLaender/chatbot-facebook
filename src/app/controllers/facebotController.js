@@ -30,11 +30,6 @@ router.post('/', (req, res) => {
                     if(event.message){
 
                         faceBot.enableMarkSeen(event.sender.id);
-                        
-                        Category.find({"parent": null}, (err, data) => {
-                            faceBot.menuCategory(event.sender.id, data);
-                        });
-                        
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
                             faceBot.treatMessage(event); 
@@ -49,7 +44,9 @@ router.post('/', (req, res) => {
                                     faceBot.enableTipeOn(event.sender.id);
                                     setTimeout(() => { 
                                         faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉📱`);
-                                        faceBot.menuCategory(event.sender.id, Category.find({}));
+                                        Category.find({"parent": null}, (err, data) => {
+                                            faceBot.menuCategory(event.sender.id, data);
+                                        });
                                     }, 1500);
                                     //faceBot.sendFirstMenu(event.sender.id);
                                     
