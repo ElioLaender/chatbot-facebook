@@ -12,7 +12,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-
 //facebook vai mandar  as informações do chat via post
 router.post('/', (req, res) => {
     const data = req.body;
