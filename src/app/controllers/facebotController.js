@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
 
                         faceBot.enableMarkSeen(event.sender.id);
                         
-                        await Category.find({}, (err, data) => {
+                        Category.find({}, (err, data) => {
                             faceBot.menuCategory(event.sender.id, data);
                         });
                         

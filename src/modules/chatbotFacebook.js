@@ -299,7 +299,7 @@ function chatbotFacebook(){
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title":"Categorias (➡️ ⬅️) ",
+                    "title":`${data[0].name}`,
                       "buttons":[
                         {
                           "type":"postback",
