@@ -49,12 +49,12 @@ router.post('/', (req, res) => {
                                 //Seleciona a categoria pelo slug, depois seleciona todas as categorias diretamente  filhas. 
                                 Category.find({slug: catSelected}, (err, data) => {
 
-                                    Category.find({parent: data._id}, (err, categories) => {
+                                    //Category.find({parent: data._id}, (err, categories) => {
 
-                                        faceBot.sendTextMessage(event.sender.id, ` -><- ${catSelected}`);
-                                        faceBot.menuCategory(event.sender.id, categories);
+                                        faceBot.sendTextMessage(event.sender.id, ` ${data.name} -><- ${catSelected}`);
+                                        //faceBot.menuCategory(event.sender.id, categories);
 
-                                    });    
+                                  //  });    
                                 });
 
                             }, 1500);
