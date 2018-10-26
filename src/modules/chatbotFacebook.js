@@ -7,9 +7,7 @@ function chatbotFacebook(){
     //Salvar no banco de dados, por enquando será em array
     this.statusCall = [];
 
-    this.teste = () => {
-        return Category.find();
-    };
+    this.teste = Category.find();
 
     this.treatMessage = (event) => {
 
