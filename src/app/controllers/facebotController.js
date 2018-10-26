@@ -31,25 +31,30 @@ router.get('/teste', (req, res) => {
           }
         };
  
-        Category.find({"parent": null}).forEach((category) => {
-          messageData
-          .message
-          .attachment
-          .elements
-          .payload
-          .elements
-          .push(
-            {
-              "title":"Categorias (➡️ ⬅️) ",
-                "buttons":[
+        Category.find({"parent": null}, (err, data) => {
+
+            data.forEach((category) => {
+                messageData
+                .message
+                .attachment
+                .elements
+                .payload
+                .elements
+                .push(
                   {
-                    "type":"postback",
-                    "title":`🔎 Ver ${category.name}`,
-                    "payload":"sandalinhas"
-                  }
-                ]      
-            });
+                    "title":"Categorias (➡️ ⬅️) ",
+                      "buttons":[
+                        {
+                          "type":"postback",
+                          "title":`🔎 Ver ${category.name}`,
+                          "payload":"sandalinhas"
+                        }
+                      ]      
+                  });
+              });
+
         });
+      
 
         res.send(messageData);
 });
