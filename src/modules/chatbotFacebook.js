@@ -282,24 +282,8 @@ function chatbotFacebook(){
     };
 
     this.menuCategory = (recipientId, data) => {
-      
-       
-        let elements; 
-        data.forEach((category) => {
-            elements += 
-            `{
-              "title":"Categorias (➡️ ⬅️) ",
-                "buttons":[
-                  {
-                    "type":"postback",
-                    "title":"🔎 Ver ${category.name}",
-                    "payload":"sandalinhas"
-                  }
-                ]      
-              },
-            `;
-        });
-
+        
+        let elements;
         let messageData = 
         {
           "recipient":{
@@ -311,13 +295,31 @@ function chatbotFacebook(){
               "type":"template",
               "payload":{
                 "template_type":"generic",
-                "elements":[
-                  elements
-                ]
+                "elements":[]
               }
             }
           }
         };
+ 
+        data.forEach((category) => {
+          messageData
+          .message
+          .attachment
+          .elements
+          .payload
+          .elements
+          .push(
+            {
+              "title":"Categorias (➡️ ⬅️) ",
+                "buttons":[
+                  {
+                    "type":"postback",
+                    "title":`🔎 Ver ${category.name}`,
+                    "payload":"sandalinhas"
+                  }
+                ]      
+            });
+        });
 
         this.callSendApi(messageData, 2500);
     };
