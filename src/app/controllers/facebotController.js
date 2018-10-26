@@ -16,7 +16,8 @@ router.get('/', async (req, res) => {
 
 router.get('/teste', (req, res) => {
 
-    Category.find({slug: 'calcados'}, (err, data) => {
+    let porra = 'calcados';
+    Category.find({slug: porra}, (err, data) => {
         if(err) console.log(err);
 
         
@@ -60,7 +61,7 @@ router.post('/', (req, res) => {
                             faceBot.enableTipeOn(event.sender.id);
                             setTimeout(() => {
                                 //Seleciona a categoria pelo slug, depois seleciona todas as categorias diretamente  filhas. 
-                                Category.find({slug: catSelected}, (err, data) => {
+                                Category.find({slug: 'calcados'}, (err, data) => {
 
                                     //Category.find({parent: data._id}, (err, categories) => {
 
