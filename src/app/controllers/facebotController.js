@@ -14,26 +14,28 @@ router.get('/', async (req, res) => {
 
 
 router.get('/teste', (req, res) => {
-    let messageData = 
-        {
-          "recipient":{
-            "id":"recipientId"
-          },
-          "messaging_type": "response",
-          "message":{
-            "attachment":{
-              "type":"template",
-              "payload":{
-                "template_type":"generic",
-                "elements":[]
-              }
-            }
-          }
-        };
+
  
         Category.find({"parent": null}, (err, data) => {
             if(err) console.log(err);
 
+            let messageData = 
+            {
+              "recipient":{
+                "id":"recipientId"
+              },
+              "messaging_type": "response",
+              "message":{
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[]
+                  }
+                }
+              }
+            };
+            
             data.forEach((category) => {
                 messageData
                 .message
