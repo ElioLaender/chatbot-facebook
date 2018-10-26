@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/teste', async (req, res) => {
-    res.status(200).send("faceBot.teste()");
+    res.status(200).send(faceBot.teste());
 });
 
 //facebook vai mandar  as informações do chat via post
