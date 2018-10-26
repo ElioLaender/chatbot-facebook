@@ -32,6 +32,7 @@ router.get('/teste', (req, res) => {
         };
  
         Category.find({"parent": null}, (err, data) => {
+            if(err) console.log(err);
 
             data.forEach((category) => {
                 messageData
