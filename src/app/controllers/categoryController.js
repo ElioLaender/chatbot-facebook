@@ -7,9 +7,7 @@ const router = express.Router();
 //router.use(authMiddleware);
 
 router.get('/', (req, res) => {
-    Category.find({}, (err, data) => {
-        res.send(data);
-    });
+    
 });
 
 router.post('/', async (req, res) => {
