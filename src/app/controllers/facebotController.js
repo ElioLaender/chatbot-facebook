@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
 
                                     Category.find({parent: data._id}, (err, categories) => {
 
-                                        faceBot.sendTextMessage(event.sender.id, `Deslize para ver mai! 👉📱`);
+                                        faceBot.sendTextMessage(event.sender.id, data._id);
                                         faceBot.menuCategory(event.sender.id, categories);
 
                                     });    
