@@ -28,7 +28,6 @@ router.post('/', (req, res) => {
             if(entry.messaging){
                 entry.messaging.forEach((event) => {
                     if(event.message){
-
                         faceBot.enableMarkSeen(event.sender.id);
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
@@ -37,27 +36,40 @@ router.post('/', (req, res) => {
                         
                     } else {
                         if(event.postback && event.postback.payload){
-                           switch(event.postback.payload){
-                                case 'started_chat':
-                                    faceBot.enableTipeOn(event.sender.id);
-                                    faceBot.sendTextMessage(event.sender.id, `Oi! Sou a Melisa, assistente virtual da WantBack!`);
-                                    faceBot.enableTipeOn(event.sender.id);
-                                    setTimeout(() => { 
-                                        faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉📱`);
-                                        Category.find({"parent": null}, (err, data) => {
-                                            faceBot.menuCategory(event.sender.id, data);
-                                        });
-                                    }, 1500);
-                                    //faceBot.sendFirstMenu(event.sender.id);
-                                    
-                                break;
-                                case 'saber_mais':
-                                    faceBot.sendTextMessage(event.sender.id, 'Nos somos uma empresa de descontos!');
-                                    faceBot.showOptionsMenu(event.sender.id);
-                                break;
+                           
+                           //verifica se o postback foi gerado pelo menu de categoria, caso contrário dá continuidade no switch
+                           if(event.postback.payload .indexOf("category_") != -1){
 
-                                default:
+                            let posIni = event.postback.payload.indexOf('_'),
+                                posFim = event.postback.payload.length;
+                            let catSelected = event.postback.payload.substring(posIni, posFim);     
+                                
+                            faceBot.sendTextMessage(event.sender.id, catSelected);
+
+                           } else {
+                                switch(event.postback.payload){
+                                    case 'started_chat':
+                                        faceBot.enableTipeOn(event.sender.id);
+                                        faceBot.sendTextMessage(event.sender.id, `Oi! Sou a Melisa, assistente virtual da WantBack!`);
+                                        faceBot.enableTipeOn(event.sender.id);
+                                        setTimeout(() => { 
+                                            faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉📱`);
+                                            Category.find({"parent": null}, (err, data) => {
+                                                faceBot.menuCategory(event.sender.id, data);
+                                            });
+                                        }, 1500);
+                                        //faceBot.sendFirstMenu(event.sender.id);
+                                        
+                                    break;
+                                    case 'saber_mais':
+                                        faceBot.sendTextMessage(event.sender.id, 'Nos somos uma empresa de descontos!');
+                                        faceBot.showOptionsMenu(event.sender.id);
+                                    break;
+
+                                    default:
+                              }
                            }
+                          
                         }
                     }
                 });

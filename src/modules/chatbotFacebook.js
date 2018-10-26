@@ -314,7 +314,7 @@ function chatbotFacebook(){
                   {
                     "type":"postback",
                     "title":`🔎 Ver ${category.name}`,
-                    "payload":"sandalinhas"
+                    "payload":`category_${category.slug}`
                   }
                 ]      
             });
