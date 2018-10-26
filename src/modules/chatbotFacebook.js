@@ -283,24 +283,25 @@ function chatbotFacebook(){
 
     this.menuCategory = (recipientId, data) => {
         
-        let messageData = 
-        {
-          "recipient":{
-            "id":recipientId
-          },
-          "messaging_type": "response",
-          "message":{
-            "attachment":{
-              "type":"template",
-              "payload":{
-                "template_type":"generic",
-                "elements": []
+        data.forEach((category) => {
+
+          let messageData = 
+          {
+            "recipient":{
+              "id":recipientId
+            },
+            "messaging_type": "response",
+            "message":{
+              "attachment":{
+                "type":"template",
+                "payload":{
+                  "template_type":"generic",
+                  "elements": []
+                }
               }
             }
-          }
-        };
- 
-        data.forEach((category) => {
+          };
+
           messageData
           .message
           .attachment
@@ -317,9 +318,11 @@ function chatbotFacebook(){
                   }
                 ]      
             });
+
+          this.callSendApi(messageData, 2500);
+
         });
 
-        this.callSendApi(messageData, 2500);
     };
 
     //////////
