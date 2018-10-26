@@ -294,7 +294,7 @@ function chatbotFacebook(){
               "type":"template",
               "payload":{
                 "template_type":"generic",
-                "elements":[]
+                "elements": []
               }
             }
           }

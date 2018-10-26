@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 
 router.get('/teste', (req, res) => {
-    let messageData = 
+    messageDataA = 
         {
           "recipient":{
             "id":"recipientId"
@@ -34,7 +34,7 @@ router.get('/teste', (req, res) => {
         Category.find({"parent": null}, (err, data) => {
 
             data.forEach((category) => {
-                messageData
+                messageDataA
                 .message
                 .attachment
                 .elements
