@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
 
                                     Category.find({parent: data._id}, (err, categories) => {
 
-                                        faceBot.sendTextMessage(event.sender.id, ` sdlkjf ${catSelected}`);
+                                        faceBot.sendTextMessage(event.sender.id, ` -> ${catSelected}`);
                                         faceBot.menuCategory(event.sender.id, categories);
 
                                     });    
