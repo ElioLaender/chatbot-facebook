@@ -40,11 +40,19 @@ router.post('/', (req, res) => {
                            //verifica se o postback foi gerado pelo menu de categoria, caso contrário dá continuidade no switch
                            if(event.postback.payload .indexOf("category_") != -1){
 
-                            let posIni = event.postback.payload.indexOf('_'),
+                            let posIni = event.postback.payload.indexOf('_') + 1,
                                 posFim = event.postback.payload.length;
-                            let catSelected = event.postback.payload.substring(posIni, posFim);     
-                                
-                            faceBot.sendTextMessage(event.sender.id, catSelected);
+                            let catSelected = event.postback.payload.substring(posIni, posFim);
+                            
+                            faceBot.enableTipeOn(event.sender.id);
+                            setTimeout(() => {
+                                //Seleciona a categoria pelo slug, depois seleciona todas as categorias diretamente  filhas. 
+                                Category.find({"slug": catSelected}, (err, data) => {
+                                    Category.find({"parent": data._id}, (err, categories) => {
+                                        faceBot.menuCategory(event.sender.id, categories);
+                                    });    
+                                });
+                            }, 1500);
 
                            } else {
                                 switch(event.postback.payload){
