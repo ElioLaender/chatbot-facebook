@@ -1,10 +1,15 @@
 'use strict';
 const request = require('request');
+const Category = require('../app/models/categoryModel');
 
 function chatbotFacebook(){
 
     //Salvar no banco de dados, por enquando será em array
     this.statusCall = [];
+
+    this.teste = () => {
+        return Category.find();
+    };
 
     this.treatMessage = (event) => {
 
@@ -363,17 +368,17 @@ function chatbotFacebook(){
                       {
                         "type":"postback",
                         "title":" 📗 Categorias",
-                        "payload":"sandalinhas"
+                        "payload":"category"
                       },
                       {
                         "type":"postback",
                         "title":" 📕 Saiba Mais",
-                        "payload":"sandalinhas"
+                        "payload":"more_information"
                       },
                       {
                         "type":"postback",
-                        "title":" 📙 Dúvidas Frequentes",
-                        "payload":"sandalinhas"
+                        "title":" 📙 Dúvidas",
+                        "payload":"doubt"
                       }
                     ]
                   }

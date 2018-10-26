@@ -11,6 +11,10 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/teste', async (req, res) => {
+    res.status(200).send(faceBot.teste());
+});
+
 //facebook vai mandar  as informações do chat via post
 router.post('/', (req, res) => {
     const data = req.body;
@@ -28,7 +32,7 @@ router.post('/', (req, res) => {
                 entry.messaging.forEach((event) => {
                     if(event.message){
                         faceBot.enableMarkSeen(event.sender.id);
-                        
+
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
                             faceBot.treatMessage(event); 
