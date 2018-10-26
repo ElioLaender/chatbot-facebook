@@ -12,20 +12,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-
-
-router.get('/teste', (req, res) => {
-
-    let porra = 'calcados';
-    Category.find({slug: porra}, (err, data) => {
-        if(err) console.log(err);
-
-        
-          res.send(data);
-    });
-});
-
-
 //facebook vai mandar  as informações do chat via post
 router.post('/', (req, res) => {
     const data = req.body;
@@ -59,19 +45,16 @@ router.post('/', (req, res) => {
                             let catSelected = event.postback.payload.substring(posIni, posFim);
                             
                             faceBot.enableTipeOn(event.sender.id);
-                            setTimeout(() => {
                                 //Seleciona a categoria pelo slug, depois seleciona todas as categorias diretamente  filhas. 
-                                Category.find({slug: 'calcados'}, (err, data) => {
+                                await Category.find({slug: catSelected}, (err, data) => {
 
-                                    //Category.find({parent: data._id}, (err, categories) => {
+                                   await Category.find({parent: data._id}, (err, categories) => {
 
-                                        faceBot.sendTextMessage(event.sender.id, ` ${data.name} -><- ${catSelected}`);
-                                        //faceBot.menuCategory(event.sender.id, categories);
+                                        faceBot.sendTextMessage(event.sender.id, ` -><- ${catSelected}`);
+                                        faceBot.menuCategory(event.sender.id, categories);
 
-                                  //  });    
+                                    });    
                                 });
-
-                            }, 1500);
 
                            } else {
                                 switch(event.postback.payload){
