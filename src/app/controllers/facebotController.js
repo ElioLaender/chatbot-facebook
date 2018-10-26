@@ -2,6 +2,7 @@ const express = require('express');
 const chatbotFacebook = require('../../modules/chatbotFacebook');
 const router = express.Router();
 const faceBot = new chatbotFacebook();
+const Category = require('../models/categoryModel');
 
 router.get('/', async (req, res) => {
     if(req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === 'SxPAGFZFFw'){
@@ -11,9 +12,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/teste', async (req, res) => {
-    res.status(200).send(faceBot.teste);
-});
 
 //facebook vai mandar  as informações do chat via post
 router.post('/', (req, res) => {
@@ -32,7 +30,6 @@ router.post('/', (req, res) => {
                 entry.messaging.forEach((event) => {
                     if(event.message){
                         faceBot.enableMarkSeen(event.sender.id);
-
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
                             faceBot.treatMessage(event); 
@@ -47,7 +44,7 @@ router.post('/', (req, res) => {
                                     faceBot.enableTipeOn(event.sender.id);
                                     setTimeout(() => { 
                                         faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉📱`);
-                                        faceBot.webview(event.sender.id);
+                                        faceBot.menuCategory(event.sender.id, Category.find({}));
                                     }, 1500);
                                     //faceBot.sendFirstMenu(event.sender.id);
                                     

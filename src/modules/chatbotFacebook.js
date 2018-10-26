@@ -1,13 +1,10 @@
 'use strict';
 const request = require('request');
-const Category = require('../app/models/categoryModel');
 
 function chatbotFacebook(){
 
     //Salvar no banco de dados, por enquando será em array
     this.statusCall = [];
-
-    this.teste = Category.find({}, (err, data) => {console.log(err);});
 
     this.treatMessage = (event) => {
 
@@ -284,8 +281,11 @@ function chatbotFacebook(){
         this.callSendApi(messageData, 2500);
     };
 
-    this.webview = (recipientId) => {
+    this.menuCategory = (recipientId, data) => {
       
+        console.log('dataaaa --------');
+        console.log(data);
+        
         let messageData = 
         {
             "recipient":{
