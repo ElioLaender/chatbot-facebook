@@ -46,14 +46,16 @@ router.post('/', (req, res) => {
                             
                             faceBot.enableTipeOn(event.sender.id);
                                 //Seleciona a categoria pelo slug, depois seleciona todas as categorias diretamente  filhas. 
-                                await Category.find({slug: catSelected}, (err, data) => {
+                                Category.find({slug: catSelected}, (err, data) => {
 
-                                   await Category.find({parent: data._id}, (err, categories) => {
+                                    setTimeout(() => { 
+                                   Category.find({parent: data._id}, (err, categories) => {
 
                                         faceBot.sendTextMessage(event.sender.id, ` -><- ${catSelected}`);
                                         faceBot.menuCategory(event.sender.id, categories);
 
-                                    });    
+                                    });   
+                                }, 1500); 
                                 });
 
                            } else {
