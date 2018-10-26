@@ -31,7 +31,7 @@ router.get('/teste', (req, res) => {
           }
         };
  
-        data.forEach((category) => {
+        Category.find({"parent": null}).forEach((category) => {
           messageData
           .message
           .attachment
