@@ -30,7 +30,11 @@ router.post('/', (req, res) => {
                     if(event.message){
 
                         faceBot.enableMarkSeen(event.sender.id);
-                        faceBot.menuCategory(event.sender.id, Category.find({}, (err, data) => {console.log(data);}));
+                        
+                        Category.find({}, (err, data) => {
+                            faceBot.menuCategory(event.sender.id, data);
+                        });
+                        
 
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
