@@ -6,8 +6,10 @@ const router = express.Router();
 //To register middleware for route interception
 //router.use(authMiddleware);
 
-router.get('/', async (req, res) => {
-    await res.send(Category.find());
+router.get('/', (req, res) => {
+    Category.find({}, (err, data) => {
+        res.send(data);
+    });
 });
 
 router.post('/', async (req, res) => {
