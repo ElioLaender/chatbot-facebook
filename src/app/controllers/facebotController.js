@@ -49,9 +49,9 @@ router.post('/', (req, res) => {
                                 Category.find({slug: catSelected}, (err, data) => {
 
                                     setTimeout(() => { 
-                                   Category.find({parent: data._id}, (err, categories) => {
+                                   Category.find({parent: data}, (err, categories) => {
 
-                                        faceBot.sendTextMessage(event.sender.id, ` -><- ${catSelected}`);
+                                        faceBot.sendTextMessage(event.sender.id, `=/ ${catSelected}`);
                                         faceBot.menuCategory(event.sender.id, categories);
 
                                     });   
