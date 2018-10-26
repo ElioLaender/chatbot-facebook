@@ -304,7 +304,6 @@ function chatbotFacebook(){
           messageData
           .message
           .attachment
-          .elements
           .payload
           .elements
           .push(
