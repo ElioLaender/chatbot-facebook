@@ -12,6 +12,19 @@ router.get('/', async (req, res) => {
     }
 });
 
+
+
+router.get('/teste', (req, res) => {
+
+    Category.find({slug: 'calcados'}, (err, data) => {
+        if(err) console.log(err);
+
+        
+          res.send(data);
+    });
+});
+
+
 //facebook vai mandar  as informações do chat via post
 router.post('/', (req, res) => {
     const data = req.body;
