@@ -283,66 +283,41 @@ function chatbotFacebook(){
 
     this.menuCategory = (recipientId, data) => {
       
-        console.log('dataaaa --------');
-        console.log(data);
-        
+       
+        let elements; 
+        data.forEach((category) => {
+            elements += 
+            `{
+              "title":"Categorias (➡️ ⬅️) ",
+                "buttons":[
+                  {
+                    "type":"postback",
+                    "title":"🔎 Ver ${category.name}",
+                    "payload":"sandalinhas"
+                  }
+                ]      
+              },
+            `;
+        });
+
         let messageData = 
         {
-            "recipient":{
-              "id":recipientId
-            },
-            "messaging_type": "response",
-            "message":{
-              "attachment":{
-                "type":"template",
-                "payload":{
-                  "template_type":"generic",
-                  "elements":[
-                    {
-                    "title":`${data[0].name}`,
-                      "buttons":[
-                        {
-                          "type":"postback",
-                          "title":"🔎 Ver Sandalinhas",
-                          "payload":"sandalinhas"
-                        }
-                      ]      
-                    },
-                    {
-                        "title":"Categorias (➡️ ⬅️) ",
-                        "buttons":[
-                          {
-                            "type":"postback",
-                            "title":"🔎 Ver Sandalinhas",
-                            "payload":"sandalinhas"
-                          }
-                        ]      
-                      },
-                      {
-                        "title":"Categorias (➡️ ⬅️) ",
-                        "buttons":[
-                          {
-                            "type":"postback",
-                            "title":"🔎 Ver Sandalinhas",
-                            "payload":"sandalinhas"
-                          }
-                        ]      
-                      },
-                      {
-                        "title":"Categorias (➡️ ⬅️) ",
-                        "buttons":[
-                          {
-                            "type":"postback",
-                            "title":"🔎 Ver Sandalinhas",
-                            "payload":"sandalinhas"
-                          }
-                        ]      
-                      }
-                  ]
-                }
+          "recipient":{
+            "id":recipientId
+          },
+          "messaging_type": "response",
+          "message":{
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"generic",
+                "elements":[
+                  elements
+                ]
               }
             }
-          };
+          }
+        };
 
         this.callSendApi(messageData, 2500);
     };
