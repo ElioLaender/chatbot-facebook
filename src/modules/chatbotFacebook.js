@@ -283,7 +283,6 @@ function chatbotFacebook(){
 
     this.menuCategory = (recipientId, data) => {
         
-        let elements;
         let messageData = 
         {
           "recipient":{
