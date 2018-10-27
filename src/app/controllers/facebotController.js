@@ -58,7 +58,7 @@ router.post('/', (req, res) => {
                                                 faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos de ${data.slug}`);
                                                 
                                                 faceBot.enableTipeOn(event.sender.id);
-                                                Product.find({categories: 'anabela, rasteirinha, femininos, calcados'}, (err, product) => {
+                                                Product.find({categories: 'anabela'}, (err, product) => {
                                                     faceBot.sendProducts(event.sender.id, product);
                                                 });
                                             }
