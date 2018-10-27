@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
                                                 return;
                                             }     
                                         });
-                                        faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos de \m/ ${data.slug}`); 
+                                        faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos de =).. ${data.slug}`); 
                                         faceBot.enableTipeOn(event.sender.id);
                                         setTimeout(() => {
                                             Product.find({categories: new RegExp('^'+data.slug+'$', "i")}, (err, product) => {
