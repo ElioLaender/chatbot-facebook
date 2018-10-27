@@ -13,6 +13,53 @@ router.get('/', async (req, res) => {
     }
 });
 
+/////////////////////////////////
+router.get('/teste', (req, res) => {
+
+    Product.find({"categories": 'anabela'}, (err, data) => {
+        if(err) console.log(err);
+
+        let messageData = 
+        {
+          "recipient":{
+            "id":"recipientId"
+          },
+          "messaging_type": "response",
+          "message":{
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"generic",
+                "elements":[]
+              }
+            }
+          }
+        };
+
+        data.forEach((category) => {
+            messageData
+            .message
+            .attachment
+            .payload
+            .elements
+            .push(
+              {
+                "title":"Categorias (➡️ ⬅️) ",
+                  "buttons":[
+                    {
+                      "type":"postback",
+                      "title":`🔎 Ver ${category.name}`,
+                      "payload":"sandalinhas"
+                    }
+                  ]      
+              });
+          });
+
+          res.send(messageData);
+    });
+});
+////////////////////////////////
+
 //facebook vai mandar  as informações do chat via post
 router.post('/', (req, res) => {
     const data = req.body;
