@@ -66,7 +66,7 @@ router.post('/', (req, res) => {
                                                 //faceBot.enableTipeOn(event.sender.id);
 
                                                 Product.find({"categories": 'anabela'}, (err, product) => {
-                                                    faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊 - ${categories}`);
+                                                    faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊 - ${product}`);
                                                     //faceBot.sendProducts(event.sender.id, product);
                                                 });
                                             }
