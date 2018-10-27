@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
                             faceBot.enableTipeOn(event.sender.id);
                                 //Seleciona a categoria pelo slug, depois seleciona todas as categorias diretamente  filhas. 
                                 Category.find({slug: catSelected}, (err, data) => {
-                                    setTimeout(() => { 
+                                    setTimeout((data) => { 
                                         Category.find({parent: data}, (err, categories) => {
                                             //Caso houver categorias filhas, será gerado as categorias filhas, caso contrário exibe os produtos da categoria.
                                             if(categories != ''){
