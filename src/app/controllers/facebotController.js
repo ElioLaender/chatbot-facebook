@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
                                                 
                                                 faceBot.enableTipeOn(event.sender.id);
                                                 setTimeout(() => { 
-                                                    Product.find({categories: 'anabela'}, (err, product) => {
+                                                    Product.find({}, (err, product) => {
                                                         faceBot.sendProducts(event.sender.id, product);
                                                     });
                                                 }, 1500);
