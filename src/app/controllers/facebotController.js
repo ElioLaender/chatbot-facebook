@@ -63,9 +63,8 @@ router.post('/', (req, res) => {
                                                 faceBot.menuCategory(event.sender.id, categories);
                                             } else {
                                                 //faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido`);
-                                                
                                                 //faceBot.enableTipeOn(event.sender.id);
-                                                
+
                                                 Product.find({"categories": 'anabela'}, (err, product) => {
                                                     faceBot.sendProducts(event.sender.id, product);
                                                 });
