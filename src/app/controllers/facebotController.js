@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
                                                 faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos de ${data.slug}`);
                                                 
                                                 faceBot.enableTipeOn(event.sender.id);
-                                                Product.find({categories: new RegExp('^'+data.slug+'$', "i")}, (err, product) => {
+                                                Product.find({categories: new RegExp('^anabela$', "i")}, (err, product) => {
                                                     faceBot.sendProducts(event.sender.id, product);
                                                 });
                                             }
