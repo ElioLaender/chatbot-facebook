@@ -54,12 +54,12 @@ router.post('/', (req, res) => {
                                                 faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊 - ${categories}`);
                                                 faceBot.menuCategory(event.sender.id, categories);
                                             } else {
-                                                faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos de ${data.name}`);
+                                                faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos de ${data.slug}`);
                                                 
                                                 faceBot.enableTipeOn(event.sender.id);
-                                                Product.find({categories: new RegExp('^'+data.slug+'$', "i")}, (err, product) => {
-                                                    faceBot.sendProducts(event.sender.id, product);
-                                                });
+                                                // Product.find({categories: new RegExp('^'+data.slug+'$', "i")}, (err, product) => {
+                                                //     faceBot.sendProducts(event.sender.id, product);
+                                                // });
                                             }
                                                 
                                             });   
