@@ -168,10 +168,10 @@ function chatbotFacebook(){
               {
                   "title": product.name,
                   "subtitle":`💵 R$ ${variation.price}\n💳 ou até 2x de R$ ${(variation.price / 2)} s / juros`,
-                  "image_url":'',
+                  "image_url":variation.images[0].path,
                   "buttons":[
                   {
-                      "type":variation.images[0].path,
+                      "type":"postback",
                       "title":"📦 Abrir Produto",
                       "payload":"<POSTBACK_PAYLOAD>"
                   },
