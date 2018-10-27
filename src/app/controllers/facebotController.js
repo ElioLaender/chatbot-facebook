@@ -47,19 +47,22 @@ router.post('/', (req, res) => {
                             faceBot.enableTipeOn(event.sender.id);
                                 //Seleciona a categoria pelo slug, depois seleciona todas as categorias diretamente  filhas. 
                                 Category.find({slug: catSelected}, (err, data) => {
-                                    setTimeout((data) => { 
+                                    setTimeout(() => { 
                                         Category.find({parent: data}, (err, categories) => {
                                             //Caso houver categorias filhas, será gerado as categorias filhas, caso contrário exibe os produtos da categoria.
                                             if(categories != ''){
                                                 faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊 - ${categories}`);
                                                 faceBot.menuCategory(event.sender.id, categories);
-                                                return;
+                                            } else {
+                                                faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos de ${data.slug}`);
+                                                
+                                                faceBot.enableTipeOn(event.sender.id);
+                                                Product.find({categories: new RegExp('^'+data.slug+'$', "i")}, (err, product) => {
+                                                    faceBot.sendProducts(event.sender.id, product);
+                                                });
                                             }
                                                 
                                             });   
-
-                                            faceBot.sendTextMessage(event.sender.id, `Opaaaaaaa - ${data.name}`);
-
                                     }, 1500); 
                                 });
 
