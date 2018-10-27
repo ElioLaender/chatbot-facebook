@@ -3,6 +3,7 @@ const chatbotFacebook = require('../../modules/chatbotFacebook');
 const router = express.Router();
 const faceBot = new chatbotFacebook();
 const Category = require('../models/categoryModel');
+const Product = require('../models/productModel');
 
 router.get('/', async (req, res) => {
     if(req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === 'SxPAGFZFFw'){
