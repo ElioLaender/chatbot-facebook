@@ -55,6 +55,11 @@ router.post('/', (req, res) => {
                                                 faceBot.menuCategory(event.sender.id, categories);
                                             } else {
                                                 faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos de ${data.name}`);
+                                                
+                                                faceBot.enableTipeOn(event.sender.id);
+                                                Product.find({categories: new RegExp('^'+data.slug+'$', "i")}, (err, product) => {
+                                                    faceBot.sendProducts(event.sender.id, product);
+                                                });
                                             }
                                                 
                                             });   
@@ -72,9 +77,7 @@ router.post('/', (req, res) => {
                                             Category.find({"parent": null}, (err, data) => {
                                                 faceBot.menuCategory(event.sender.id, data);
                                             });
-                                        }, 1500);
-                                        //faceBot.sendFirstMenu(event.sender.id);
-                                        
+                                        }, 1500);   
                                     break;
                                     case 'saber_mais':
                                         faceBot.sendTextMessage(event.sender.id, 'Nos somos uma empresa de descontos!');

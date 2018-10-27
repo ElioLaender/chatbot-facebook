@@ -12,6 +12,7 @@ const ProductSchema = new mongoose.Schema({
     description: {
         type: String,
     },
+    categories: String, //Ex: rasteirinha, femininos, calçados
     variations: [{
         price: {
             type: Number,
@@ -49,7 +50,6 @@ const ProductSchema = new mongoose.Schema({
         }],
         productSize: String,
         productColor: String,
-        categories: String, //Ex: rasteirinha, femininos, calçados
         weight: {
             type: Number,
         },

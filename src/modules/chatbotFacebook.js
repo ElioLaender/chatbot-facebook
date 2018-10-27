@@ -138,7 +138,7 @@ function chatbotFacebook(){
     };
 
     //opções iniciais do atendimento (menu principal)
-    this.sendFirstMenu = (recipientId) => {
+    this.sendProducts = (recipientId, data) => {
         let messageData = 
         {
             "recipient":{
@@ -146,137 +146,44 @@ function chatbotFacebook(){
             },
             "messaging_type": "response",
             "message":{
-                "quick_replies": [
-                {
-                  "content_type":"text",
-                  "title":"#sandalia",
-                  "image_url":"https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/master/images/Messenger_Icon.png",
-                  "payload":"payload1"
-                },
-                {
-                  "content_type":"text",
-                  "title":"#sapatilha",
-                  "payload":"payload2"
-                },
-                {
-                    "content_type":"text",
-                    "title":"#botas",
-                    "payload":"payload2"
-                },
-                {
-                    "content_type":"text",
-                    "title":"#chinelinhos",
-                    "payload":"payload2"
-                },
-                {
-                    "content_type":"text",
-                    "title":"#anabela",
-                    "payload":"payload2"
-                },
-                {
-                    "content_type":"text",
-                    "title":"#pipitu",
-                    "payload":"payload2"
-                },
-                {
-                    "content_type":"text",
-                    "title":"#sandalias",
-                    "payload":"payload2"
-                }
-              ],
               "attachment":{
                 "type":"template",
                 "payload":{
                   "template_type":"generic",
-                  "elements":[
-                    {
-                      "title":"Sandália Anabela Bottero",
-                      "subtitle":`💵 R$ 120,00\n💳 ou até 2x de R$ 60,00 s / juros`,
-                      "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines224.jpg",
-                      "buttons":[
-                        {
-                          "type":"postback",
-                          "title":"📦 Abrir Produto",
-                          "payload":"<POSTBACK_PAYLOAD>"
-                        },
-                        {
-                            "type":"postback",
-                            "title":"❤ Favoritar",
-                            "payload":"<POSTBACK_PAYLOAD>"
-                          }
-                      ]      
-                    },
-                    {
-                        "title":"Peep Toe Classic Nude ",
-                        "subtitle":`💵 R$ 240,00\n💳 ou até 2x de R$ 120,00 s / juros`,
-                        "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines880.jpg",
-                        "buttons":[
-                            {
-                              "type":"postback",
-                              "title":"📦 Abrir Produto",
-                              "payload":"<POSTBACK_PAYLOAD>"
-                            },
-                            {
-                                "type":"postback",
-                                "title":"❤ Favoritar",
-                                "payload":"<POSTBACK_PAYLOAD>"
-                              }
-                          ]        
-                      },
-                      {
-                        "title":"This is a generic template",
-                        "subtitle":"Plus a subtitle!",
-                        "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines651.jpg",
-                        "buttons":[
-                          {
-                            "type":"postback",
-                            "title":"Postback Button",
-                            "payload":"<POSTBACK_PAYLOAD>"
-                          }
-                        ]      
-                      },
-                      {
-                        "title":"This is a generic template",
-                        "subtitle":"Plus a subtitle!",
-                        "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines651.jpg",
-                        "buttons":[
-                          {
-                            "type":"postback",
-                            "title":"Postback Button",
-                            "payload":"<POSTBACK_PAYLOAD>"
-                          }
-                        ]      
-                      }, 
-                    {
-                      "title":"Another generic template",
-                      "subtitle":"Plus a subtitle!",
-                      "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines651.jpg",
-                      "buttons":[
-                        {
-                          "type":"postback",
-                          "title":"Postback Button",
-                          "payload":"<POSTBACK_PAYLOAD>"
-                        }
-                      ]      
-                    },
-                    {
-                      "title":"And another!",
-                      "subtitle":"Plus a subtitle!",
-                      "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines651.jpg",
-                      "buttons":[
-                        {
-                          "type":"postback",
-                          "title":"Postback Button",
-                          "payload":"<POSTBACK_PAYLOAD>"
-                        }
-                      ]      
-                    }
-                  ]
+                  "elements":[]
                 }
               }
             }
-          }
-        
+        }
+
+        data.forEach((product) => {
+            product.variation.forEach((variation) => {
+              messageData
+              .message
+              .attachment
+              .payload
+              .elements
+              .push(
+                {
+                    "title": product.name,
+                    "subtitle":`💵 R$ ${variation.price}\n💳 ou até 2x de R$ ${(variation.price / 2)} s / juros`,
+                    "image_url":variation[0].path,
+                    "buttons":[
+                    {
+                        "type":"postback",
+                        "title":"📦 Abrir Produto",
+                        "payload":"<POSTBACK_PAYLOAD>"
+                    },
+                    {
+                        "type":"postback",
+                        "title":"❤ Favoritar",
+                        "payload":"<POSTBACK_PAYLOAD>"
+                        }
+                    ]      
+                }
+              );
+          }); 
+        });
 
         this.callSendApi(messageData, 2500);
     };
