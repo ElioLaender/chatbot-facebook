@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
                                                 faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊 - ${categories}`);
                                                 faceBot.menuCategory(event.sender.id, categories);
                                             } else {
-                                                faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos`);
+                                                faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos de ${data.name}`);
                                             }
                                                 
                                             });   
