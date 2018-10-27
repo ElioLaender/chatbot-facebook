@@ -57,10 +57,10 @@ router.post('/', (req, res) => {
                                             } else {
                                                 faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido os produtos de ${data.slug}`);
                                                 
-                                                faceBot.enableTipeOn(event.sender.id);
-                                                Product.find({categories: 'anabela'}, (err, product) => {
-                                                    faceBot.sendProducts(event.sender.id, product);
-                                                });
+                                                // faceBot.enableTipeOn(event.sender.id);
+                                                // Product.find({categories: 'anabela'}, (err, product) => {
+                                                //     faceBot.sendProducts(event.sender.id, product);
+                                                // });
                                             }
                                                 
                                             });   
