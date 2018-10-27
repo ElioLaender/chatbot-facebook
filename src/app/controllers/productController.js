@@ -5,6 +5,7 @@ const mkdirp = require('mkdirp');
 const authMiddleware = require('../middlewares/authMiddleware');
 const Product = require('../models/productModel');
 
+
 const router = express.Router();
 //To register middleware for route interception
 //router.use(authMiddleware);
