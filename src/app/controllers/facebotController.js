@@ -66,8 +66,10 @@ router.post('/', (req, res) => {
                                                 //faceBot.enableTipeOn(event.sender.id);
 
                                                 Product.find({"categories": 'anabela'}, (err, product) => {
+                                                    setTimeout(() => { 
                                                     //faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊 - ${product} - ${event.sender.id}`);
-                                                    faceBot.sendTextMessage(event.sender.id, faceBot.sendProducts(event.sender.id, product));
+                                                    faceBot.sendProducts(event.sender.id, product);
+                                                    }, 1500); 
                                                 });
                                             }
                                                 
