@@ -69,7 +69,7 @@ router.post('/', (req, res) => {
                                                     setTimeout(() => { 
                                                     //faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊 - ${product} - ${event.sender.id}`);
                                                     faceBot.sendProducts(event.sender.id, product);
-                                                    }, 1500); 
+                                                    }, 2500); 
                                                 });
                                             }
                                                 
