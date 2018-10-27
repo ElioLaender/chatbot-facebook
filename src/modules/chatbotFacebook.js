@@ -186,7 +186,7 @@ function chatbotFacebook(){
         }); 
       });
 
-        this.callSendApi(messageData, 2500);
+        this.callSendApi(messageDataG, 2500);
     };
 
     this.menuCategory = (recipientId, data) => {
