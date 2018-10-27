@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
                                     setTimeout(() => { 
                                         Category.find({parent: data}, (err, categories) => {
                                             //Caso houver categorias filhas, será gerado as categorias filhas, caso contrário exibe os produtos da categoria.
-                                            if(categories.length === 0){
+                                            if(categories != 'undefined'){
                                                 faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊`);
                                                 faceBot.menuCategory(event.sender.id, categories);
                                             } else {
