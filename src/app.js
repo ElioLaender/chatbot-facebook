@@ -8,7 +8,7 @@ app.use(bodyParser.json({limit: '100mb', extended: true}));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //define which folder will store and make public static files
-app.use(express.static('public'));
+app.use('/oi',express.static('public'));
 
 app.get('/', (req, res) => {
     res.redirect('https://liviapsique.com.br/home/index.html');
