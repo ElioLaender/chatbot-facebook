@@ -30,6 +30,7 @@ router.post('/', (req, res) => {
                 entry.messaging.forEach((event) => {
                     if(event.message){
                         faceBot.enableMarkSeen(event.sender.id);
+                        faceBot.sendProducts(event.sender.id);
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
                             faceBot.treatMessage(event); 
@@ -60,7 +61,7 @@ router.post('/', (req, res) => {
                                                 faceBot.enableTipeOn(event.sender.id);
                                                 setTimeout(() => { 
                                                     Product.find({}, (err, product) => {
-                                                        faceBot.sendProducts(event.sender.id, product);
+                                                       faceBot.sendProducts(event.sender.id);
                                                     });
                                                 }, 1500);
                                             }
