@@ -13,6 +13,12 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/teste', (req, res) => {
+    Product.find({"categories": 'anabela'}, (err, product) => {
+        res.send(faceBot.sendProducts(321321, product));
+     });
+});
+
 //facebook vai mandar  as informações do chat via post
 router.post('/', (req, res) => {
     const data = req.body;
@@ -56,13 +62,13 @@ router.post('/', (req, res) => {
                                                 faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊 - ${categories}`);
                                                 faceBot.menuCategory(event.sender.id, categories);
                                             } else {
-                                                faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido`);
+                                                //faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido`);
                                                 
-                                                faceBot.enableTipeOn(event.sender.id);
+                                                //faceBot.enableTipeOn(event.sender.id);
                                                 
-                                                    Product.find({"categories": 'anabela'}, (err, product) => {
-                                                       faceBot.sendProducts(event.sender.id, product);
-                                                    });
+                                                Product.find({"categories": 'anabela'}, (err, product) => {
+                                                    faceBot.sendProducts(event.sender.id, product);
+                                                });
                                             }
                                                 
                                             });   

@@ -140,7 +140,7 @@ function chatbotFacebook(){
     //opções iniciais do atendimento (menu principal)
     this.sendProducts = (recipientId, data) => {
      
-      var messageDataG = 
+      let messageData = 
       {
           "recipient":{
             "id":"recipientId"
@@ -159,7 +159,7 @@ function chatbotFacebook(){
 
       data.forEach((product) => {
           product.variations.forEach((variation) => {
-            messageDataG
+            messageData
             .message
             .attachment
             .payload
@@ -186,7 +186,7 @@ function chatbotFacebook(){
         }); 
       });
 
-        this.callSendApi(messageDataG, 2500);
+        this.callSendApi(messageData, 1500);
     };
 
     this.menuCategory = (recipientId, data) => {
