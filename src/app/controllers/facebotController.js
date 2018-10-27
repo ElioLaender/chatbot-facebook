@@ -13,53 +13,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-/////////////////////////////////
-router.get('/teste', (req, res) => {
-
-    Product.find({"categories": 'anabela'}, (err, data) => {
-        if(err) console.log(err);
-
-        let messageData = 
-        {
-          "recipient":{
-            "id":"recipientId"
-          },
-          "messaging_type": "response",
-          "message":{
-            "attachment":{
-              "type":"template",
-              "payload":{
-                "template_type":"generic",
-                "elements":[]
-              }
-            }
-          }
-        };
-
-        data.forEach((category) => {
-            messageData
-            .message
-            .attachment
-            .payload
-            .elements
-            .push(
-              {
-                "title":"Categorias (➡️ ⬅️) ",
-                  "buttons":[
-                    {
-                      "type":"postback",
-                      "title":`🔎 Ver ${category.name}`,
-                      "payload":"sandalinhas"
-                    }
-                  ]      
-              });
-          });
-
-          res.send(messageData);
-    });
-});
-////////////////////////////////
-
 //facebook vai mandar  as informações do chat via post
 router.post('/', (req, res) => {
     const data = req.body;
@@ -77,7 +30,7 @@ router.post('/', (req, res) => {
                 entry.messaging.forEach((event) => {
                     if(event.message){
                         faceBot.enableMarkSeen(event.sender.id);
-                        faceBot.sendProducts(event.sender.id);
+                        
                         setTimeout(() => { 
                             faceBot.enableTipeOn(event.sender.id);
                             faceBot.treatMessage(event); 
@@ -107,8 +60,8 @@ router.post('/', (req, res) => {
                                                 
                                                 faceBot.enableTipeOn(event.sender.id);
                                                 setTimeout(() => { 
-                                                    Product.find({}, (err, product) => {
-                                                       faceBot.sendProducts(event.sender.id);
+                                                    Product.find({"categories": 'anabela'}, (err, product) => {
+                                                       faceBot.sendProducts(event.sender.id, product);
                                                     });
                                                 }, 1500);
                                             }

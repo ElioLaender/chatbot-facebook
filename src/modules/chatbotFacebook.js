@@ -138,43 +138,53 @@ function chatbotFacebook(){
     };
 
     //opções iniciais do atendimento (menu principal)
-    this.sendProducts = (recipientId) => {
-        let messageData = 
-        {
-            "recipient":{
-              "id":recipientId
-            },
-            "messaging_type": "response",
-            "message":{
-              "attachment":{
-                "type":"template",
-                "payload":{
-                  "template_type":"generic",
-                  "elements":
-                  [
-                    {
-                      "title":"Sandália Anabela Bottero",
-                      "subtitle":`💵 R$ 120,00\n💳 ou até 2x de R$ 60,00 s / juros`,
-                      "image_url":"https://api-sale-facebook.herokuapp.com/product/get/image/jhines224.jpg",
-                      "buttons":[
-                      {
-                          "type":"postback",
-                          "title":"📦 Abrir Produto",
-                          "payload":"<POSTBACK_PAYLOAD>"
-                      },
-                      {
-                          "type":"postback",
-                          "title":"❤ Favoritar",
-                          "payload":"<POSTBACK_PAYLOAD>"
-                          }
-                      ]      
-                  }
-                  ]
-                }
+    this.sendProducts = (recipientId, data) => {
+     
+      let messageData = 
+      {
+          "recipient":{
+            "id":"recipientId"
+          },
+          "messaging_type": "response",
+          "message":{
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"generic",
+                "elements":[]
               }
             }
-        }
+          }
+      }
 
+      data.forEach((product) => {
+          product.variations.forEach((variation) => {
+            messageData
+            .message
+            .attachment
+            .payload
+            .elements
+            .push(
+              {
+                  "title": product.name,
+                  "subtitle":`💵 R$ ${variation.price}\n💳 ou até 2x de R$ ${(variation.price / 2)} s / juros`,
+                  "image_url":'',
+                  "buttons":[
+                  {
+                      "type":variation.images[0].path,
+                      "title":"📦 Abrir Produto",
+                      "payload":"<POSTBACK_PAYLOAD>"
+                  },
+                  {
+                      "type":"postback",
+                      "title":"❤ Favoritar",
+                      "payload":"<POSTBACK_PAYLOAD>"
+                      }
+                  ]      
+              }
+            );
+        }); 
+      });
 
         this.callSendApi(messageData, 2500);
     };
