@@ -67,7 +67,7 @@ router.post('/', (req, res) => {
 
                                                 Product.find({"categories": 'anabela'}, (err, product) => {
                                                     faceBot.sendTextMessage(event.sender.id, `Olha! Veja os produtos!`);
-                                                   // faceBot.sendProducts(event.sender.id, product);
+                                                    faceBot.sendProducts(event.sender.id, product);
                                                 });
                                             }
                                                 
