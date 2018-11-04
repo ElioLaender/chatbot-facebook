@@ -65,7 +65,7 @@ router.post('/', (req, res) => {
                                                 //faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido`);
                                                 //faceBot.enableTipeOn(event.sender.id);
 
-                                                Product.find({"categories": `${categories[0].slug}`}, (err, product) => {
+                                                Product.find({"categories": categories[0].slug}, (err, product) => {
                                                     faceBot.sendTextMessage(event.sender.id, `Olha! Veja os produtos!`);
                                                    // faceBot.sendProducts(event.sender.id, product);
                                                 });
