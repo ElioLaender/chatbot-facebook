@@ -59,12 +59,11 @@ router.post('/', (req, res) => {
                                         Category.find({parent: data}, (err, categories) => {
                                             //Caso houver categorias filhas, será gerado as categorias filhas, caso contrário exibe os produtos da categoria.
                                             if(categories != ''){
-                                                faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊 - ${categories}`);
+                                                faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades.. 😊`);
                                                 faceBot.menuCategory(event.sender.id, categories);
                                             } else {
-                                                //faceBot.sendTextMessage(event.sender.id, `Deverá ser exibido`);
-                                                //faceBot.enableTipeOn(event.sender.id);
-
+                                                
+                                                faceBot.enableTipeOn(event.sender.id);
                                                 Product.find({"categories": 'anabela'}, (err, product) => {
                                                     faceBot.sendTextMessage(event.sender.id, `Olha! temos variedades..`);
                                                     faceBot.sendProducts(event.sender.id, product);
@@ -79,7 +78,7 @@ router.post('/', (req, res) => {
                                 switch(event.postback.payload){
                                     case 'started_chat':
                                         faceBot.enableTipeOn(event.sender.id);
-                                        faceBot.sendTextMessage(event.sender.id, `Oi! Sou a Melisa, assistente virtual da WantBack!`);
+                                        faceBot.sendTextMessage(event.sender.id, `Oi! Sou a Melisa, assistente virtual!`);
                                         faceBot.enableTipeOn(event.sender.id);
                                         setTimeout(() => { 
                                             faceBot.sendTextMessage(event.sender.id, `Deslize para ver as categorias! 👉📱`);

@@ -13,9 +13,9 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.redirect('https://liviapsique.com.br/home/index.html');
 });
+
 //returns all controllers to the application 
 require('./app/controllers/indexController.js')(app);
-
 
 app.listen(port, () => {
     console.log(`Server on`);
